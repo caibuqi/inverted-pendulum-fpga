@@ -1,0 +1,103 @@
+// =====================================================================
+//  Physical constraints  --  Pocket Lab-F1 / GW1N-UV9EQ144C6
+//  All pins below come from the official user manual tables 3-6, 3-9,
+//  3-10 plus the J4 expansion header.
+// =====================================================================
+
+// ---------------- 50 MHz oscillator (table 3-4) ----------------
+IO_LOC  "clk_50m"   11;
+IO_PORT "clk_50m"   IO_TYPE=LVCMOS33 PULL_MODE=NONE;
+
+// ---------------- 8 push buttons, active low (table 3-6) ----------------
+IO_LOC  "key_n[0]"  56;
+IO_PORT "key_n[0]"  IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC  "key_n[1]"  59;
+IO_PORT "key_n[1]"  IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC  "key_n[2]"  60;
+IO_PORT "key_n[2]"  IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC  "key_n[3]"  61;
+IO_PORT "key_n[3]"  IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC  "key_n[4]"  62;
+IO_PORT "key_n[4]"  IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC  "key_n[5]"  63;
+IO_PORT "key_n[5]"  IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC  "key_n[6]"  64;
+IO_PORT "key_n[6]"  IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC  "key_n[7]"  65;
+IO_PORT "key_n[7]"  IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+// ---------------- DIP switches (table 3-12) -----------------------------
+// SW1 = 75  SW2 = 76  SW3 = 77  SW4 = 79
+// 启动开关从 SW1(pin 75) 换到 SW4(pin 79), 因为 75 那个坏了
+// SW4 UP = high -> 起摆 + 平衡
+// SW2 UP = high -> 只平衡 (不起摆)
+IO_LOC  "sw_run"    79;
+IO_PORT "sw_run"    IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC  "sw_mode"   76;
+IO_PORT "sw_mode"   IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+
+// ---------------- Type-C serial / CH340 (table 3-13) ---------------------
+IO_LOC  "uart_rx"   49;
+IO_PORT "uart_rx"   IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC  "uart_tx"   48;
+IO_PORT "uart_tx"   IO_TYPE=LVCMOS33 DRIVE=8;
+
+// ---------------- 4-digit 7-seg, common anode, active low (table 3-10) ----
+IO_LOC  "seg_n[0]"  138;
+IO_PORT "seg_n[0]"  IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC  "seg_n[1]"  142;
+IO_PORT "seg_n[1]"  IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC  "seg_n[2]"  9;
+IO_PORT "seg_n[2]"  IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC  "seg_n[3]"  7;
+IO_PORT "seg_n[3]"  IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC  "seg_n[4]"  12;
+IO_PORT "seg_n[4]"  IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC  "seg_n[5]"  139;
+IO_PORT "seg_n[5]"  IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC  "seg_n[6]"  8;
+IO_PORT "seg_n[6]"  IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC  "seg_n[7]"  10;
+IO_PORT "seg_n[7]"  IO_TYPE=LVCMOS33 DRIVE=8;
+
+IO_LOC  "dig_n[0]"  137;
+IO_PORT "dig_n[0]"  IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC  "dig_n[1]"  140;
+IO_PORT "dig_n[1]"  IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC  "dig_n[2]"  141;
+IO_PORT "dig_n[2]"  IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC  "dig_n[3]"  3;
+IO_PORT "dig_n[3]"  IO_TYPE=LVCMOS33 DRIVE=8;
+
+// ---------------- passive buzzer (table 3-9) ----------------
+IO_LOC  "beep"      6;
+IO_PORT "beep"      IO_TYPE=LVCMOS33 DRIVE=8;
+
+// ---------------- 4 blue LEDs, active high (table 3-8) ----------------
+// LED1..LED4 show the current display mode
+IO_LOC  "led[0]"    23;
+IO_PORT "led[0]"    IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC  "led[1]"    24;
+IO_PORT "led[1]"    IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC  "led[2]"    25;
+IO_PORT "led[2]"    IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC  "led[3]"    26;
+IO_PORT "led[3]"    IO_TYPE=LVCMOS33 DRIVE=8;
+
+// ---------------- TB6612 motor driver (J4 header) ----------------
+IO_LOC  "motor_pwm"   41;
+IO_PORT "motor_pwm"   IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC  "motor_dir"   42;
+IO_PORT "motor_dir"   IO_TYPE=LVCMOS33 DRIVE=8;
+IO_LOC  "motor_dir_n" 46;
+IO_PORT "motor_dir_n" IO_TYPE=LVCMOS33 DRIVE=8;
+
+// ---------------- MG513 encoder, 3.3 V (J4 header) ----------------
+IO_LOC  "enc_a"     43;
+IO_PORT "enc_a"     IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC  "enc_b"     44;
+IO_PORT "enc_b"     IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+// ---------------- SA100 angle sensor (J4 header) ----------------
+IO_LOC  "sa100_pwm" 45;
+IO_PORT "sa100_pwm" IO_TYPE=LVCMOS33 PULL_MODE=UP;

@@ -1,0 +1,41 @@
+# ---------- 高云 EDA 生成物 (可再生成, 不入库) ----------
+/inverted pendulum/impl/
+/inverted pendulum/build_out.txt
+/inverted pendulum/build_full.log
+/inverted pendulum/*.gprj.user
+/inverted pendulum/src/.dide/
+*.fs
+*.bin
+*.binx
+*.db
+*.vg
+*.rpt.html
+*.rpt.txt
+*.power.html
+*.pin.html
+*.timing_paths
+*.tr
+*.tr.html
+*.log
+
+# ---------- Python ----------
+__pycache__/
+*.pyc
+.mplcache/
+
+# ---------- 手册 / 照片 (版权 + 体积, 不入库) ----------
+*.pdf
+*.jpg
+# 手册的 OCR 文本 (厂商资料, 同为版权内容)
+*_text.txt
+manual_text.txt
+
+# ---------- 工程备份压缩包 (含构建产物, 且源码可能是旧版) ----------
+*.zip
+
+# ---------- 旧的空工程 ----------
+/daolibai/
+
+# ---------- 临时文件 ----------
+.wtest
+~$*
